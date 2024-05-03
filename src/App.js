@@ -6,7 +6,6 @@ export default function App() {
   return (
    <div className="App">
     <div className="container">
-    Weather App
     <Weather />
     <footer>
       <p>This is a website built by <a href="https://jolly-wing-8b84f9.netlify.app" target="_blank"
