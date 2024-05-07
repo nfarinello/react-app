@@ -61,7 +61,7 @@ if (ready) {
   </div>
   );
 } else {
-  const apiKey = "5201594abea9f3e38b70e65b11a80c24";
+  const apiKey = "96771e971243152d6b8948878c26adde";
   let city ="London";
   let apiUrl =
   `http://api.openweathermap.org/data/2.5/weather?q=${city}appid=${apiKey}&units=metric`;
