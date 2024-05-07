@@ -3,14 +3,18 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({ ready : false });
   function handleResponse(response) {
-    console.log(response.data);
-    setTemperature(response.data.main.temp);
-    setReady(true);
+    setWeatherData ({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].description,
+      wind: response.data.wind.speed,
+      iconUrl:"https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+    });
   }
-if (ready) {
+if (weatherData.ready) {
   return (
   <div className="Weather">
     <form>
@@ -34,27 +38,26 @@ if (ready) {
     <h1>London</h1>
     <ul>
       <li>Friday 15:00</li>
-      <li>Mostly Cloudy</li>
+      <li className="text-capitalize">{weatherData.description}</li>
     </ul>
     <div className="row mt-3">
       <div className="col-6">
         <div className="d-flex">
           <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt="Mostly Cloudy"
+            src={weatherData.iconUrl}
+            alt={weatherData.description}
             className="float-left"
           />
          <div className="float-left">
-          <span className="temperature">{Math.round(temperature)}</span>
+          <span className="temperature">{Math.round(weatherData.temperature)}</span>
           <span className="unit">°C</span>
         </div>
     </div>
   </div>
     <div className="col-6">
        <ul>
-          <li>Precipitation: 75%</li>
-          <li>Humidity: 78%</li>
-          <li>Wind: 6 km/h</li>
+          <li>Humidity: {weatherData.humidity}%</li>
+          <li>Wind: {weatherData.wind}km/h</li>
         </ul>
       </div>
     </div>
