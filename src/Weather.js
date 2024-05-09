@@ -20,12 +20,6 @@ export default function Weather(props) {
       iconUrl:"https://ssl.gstatic.com/onebox/weather/64/sunny.png"
     });
   }
-  function search() {
-    const apiKey = "3980a7c8f2a782241a093131b099f993";
-    let apiUrl =
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -33,6 +27,12 @@ export default function Weather(props) {
   function handleCityChange(event) {
     setCity(event.target.value);
 
+  }
+  function search() {
+    const apiKey = "3980a7c8f2a782241a093131b099f993";
+    let apiUrl =
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 if (weatherData.ready) {
   return (
