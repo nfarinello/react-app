@@ -26,8 +26,9 @@ if (loaded) {
             <WeatherForecastDay data={dailyForecast} />
           </div>
         );
-      }
-      return null; // Add this line
+      } else {
+      return null;
+      } // Add this line
       })}
         </div>
       </div>
